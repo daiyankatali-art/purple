@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Purple Travel</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body class="splash-body">
+
+<div class="splash-top">
+    <div class="splash-card">
+        <img src="logo.png" alt="Purple Travel" class="splash-logo">
+        <p class="splash-welcome">Welcome aboard — your journey starts here.</p>
+
+        <div class="spinner"></div>
+        <p class="splash-loading">Loading...</p>
+    </div>
+
+    <a href="home.html" class="splash-skip" id="skipLink">Skip Intro</a>
+</div>
+
+<div class="splash-motto">
+    <span>SAFE</span><span class="dot">•</span><span>RELIABLE</span><span class="dot">•</span><span>COMFORTABLE</span>
+</div>
+
+<script>
+(function () {
+    const SPLASH_KEY = "purpleTravelSplashShown";
+    const DURATION = 10000; // 10 seconds
+
+    if (sessionStorage.getItem(SPLASH_KEY)) {
+        window.location.href = "home.html";
+        return;
+    }
+
+    function goHome() {
+        sessionStorage.setItem(SPLASH_KEY, "true");
+        window.location.href = "home.html";
+    }
+
+    document.getElementById("skipLink").addEventListener("click", function (e) {
+        e.preventDefault();
+        goHome();
+    });
+
+    setTimeout(goHome, DURATION);
+})();
+</script>
+
+</body>
+</html>

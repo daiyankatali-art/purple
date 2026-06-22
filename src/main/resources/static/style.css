@@ -1,0 +1,437 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #3b0066;
+    /* padding-top: var(--header-height); */
+}
+/* :root {
+    --header-height: 90px;
+} */
+/* HEADER */
+header {
+    background: #4b0082;
+    color: white;
+    padding: 15px 20px;
+     position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* z-index: 1000; */
+    
+}
+#big{
+    margin-top: 0.5px;
+    background: #4b0082;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 0 0 22px 22px;
+    height: 200px;
+     text-align: center;
+     width: 100%;
+     
+}
+#big h3{
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+     flex-wrap: wrap;
+}
+
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+    background: #4b0082;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+/* INDEX LAYOUT */
+.container {
+    display: flex;
+    min-height: 80vh;
+}
+
+/* MOBILE STACK FIX */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar, .main {
+        width: 100%;
+        
+    }
+
+    .sidebar {
+        order: 2;
+    }
+
+    .main {
+        order: 1;
+    }
+}
+
+.sidebar {
+    width: 25%;
+    background: #f7f2fa;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 2px;
+    margin-bottom: 0px;
+}
+
+.main {
+    width: 65%;
+    padding: 20px;
+}
+
+/* SEARCH BAR */
+.search-bar input {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* LIST ITEMS */
+.location-list div {
+    background: #ffffff;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.08);
+    cursor: pointer;
+    width: 70%;
+}
+
+/* FORMS */
+.form-container {
+    background: #f7f2fa;
+    padding: 20px;
+    border-radius: 12px;
+    width: 60%;
+    margin: auto;
+    box-shadow: 0 0 8px rgba(0,0,0,0.08);
+}
+@media (max-width: 768px) {
+    .form-container {
+        width: 90%;
+    }
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+     font-size: 16px;
+}
+
+button {
+    background: #4b0082;
+    color: white;
+    padding: 10px;
+    border: none;
+    margin-top: 15px;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+     font-size: 16px;
+}
+#payment{
+    background: #4b0082;
+    color: white;
+    padding: 10px;
+    border: none;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    
+
+}
+
+
+
+button:hover {
+    background: #36005f;
+}
+
+/* SERVICES GRID */
+.services-container {
+    padding: 20px;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+@media (max-width: 992px) {
+    .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 600px) {
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.service-box {
+    background: #f7f2fa;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.06);
+}
+
+/* TICKET BRANDING (screen + print) */
+.ticket-brand {
+    text-align: center;
+    font-weight: bold;
+    color: #4b0082;
+    letter-spacing: 1px;
+    font-size: 14px;
+    border-bottom: 2px solid #4b0082;
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+}
+
+.ticket-number-row {
+    font-weight: bold;
+    font-size: 18px;
+    color: #4b0082;
+}
+
+.ticket-stub-line {
+    border-top: 2px dashed #b993d6;
+    margin: 16px 0 10px;
+}
+
+.ticket-note {
+    text-align: center;
+    font-size: 13px;
+    color: #6b4690;
+    margin-bottom: 14px;
+}
+
+/* PRINT-ONLY RULES */
+@media print {
+    @page {
+        margin: 1.2cm;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+
+    body {
+        background: #ffffff;
+    }
+
+    #ticket {
+        display: block !important;
+    }
+
+    .ticket-card {
+        box-shadow: none;
+        border: 3px solid #4b0082;
+        border-radius: 14px;
+        width: 90%;
+        margin: 0 auto;
+        padding: 30px;
+    }
+
+    .ticket-card p {
+        font-size: 15px;
+    }
+
+    .ticket-brand {
+        font-size: 18px;
+    }
+
+    .ticket-number-row {
+        font-size: 22px;
+    }
+}
+#ticket .form-container {
+    scroll-margin-top: 90px;
+}
+html, body {
+    min-height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
+}
+.form-container {
+    margin: 25px auto;
+}
+/* .navbar-logo {
+    height: 50px;
+} */
+ .navbar-logo {
+    height: 90px;
+    background: #ffffff;
+    border-radius: 50%;
+    padding: 4px 8px;
+}
+
+.ticket-logo {
+    display: block;
+    margin: 0 auto 10px;
+    height: 90px;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('logo.png');
+    background-repeat: no-repeat;
+    background-position: center 250px;
+    background-size: 45%;
+    opacity: 0.3;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@media print {
+    body::before {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        opacity: 0.12;
+     }
+}
+
+.booking-layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 25px auto;
+    max-width: 900px;
+}
+
+.booking-layout .form-container {
+    margin: 0;
+    width: auto;
+    flex: 1 1 420px;
+}
+
+.availability-panel {
+    background: #f7f2fa;
+    border-radius: 12px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.availability-panel h3 {
+    margin-top: 0;
+    color: #4b0082;
+}
+
+.availability-bar {
+    background: #e0d4ec;
+    border-radius: 8px;
+    height: 14px;
+    overflow: hidden;
+    margin-top: 12px;
+}
+
+.availability-fill {
+    height: 100%;
+    background: #4b0082;
+    width: 0%;
+    transition: width 0.3s;
+}
+
+@media (max-width: 768px) {
+    .booking-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+    .availability-panel {
+        width: 90%;
+    }
+}
+
+.info-card {
+    background: #f7f2fa;
+    border-radius: 12px;
+    padding: 20px 25px;
+    margin-top: 25px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.08);
+}
+
+.info-card h3 {
+    margin-top: 0;
+    color: #4b0082;
+}
+
+.info-card ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.info-card li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.info-card li strong {
+    color: #4b0082;
+}
+
+/*
+.brand-showcase {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.brand-logo {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(75, 0, 130, 0.22);
+} */

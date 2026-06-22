@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="pay" onclick="make_payment()">Make Payment</button>
+    <p id="p"></p>
+    <button id="done"></button>
+    <script>
+        const payment=document.getElementById("pay");
+        function make_payment(){
+            const message=document.getElementById("p");
+            message.innerText="Payment Successful";
+            const doneButton=document.getElementById("done");
+            doneButton.innerText="view Ticket";
+        }
+            
+        </script>
+    
+</body>
+</html>

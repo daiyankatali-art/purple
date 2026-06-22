@@ -1,0 +1,106 @@
+/* SPLASH SCREEN */
+.splash-body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(
+        180deg,
+        #4b0082 0%,
+        #7a3fae 16%,
+        #f3eaf9 42%,
+        #f3eaf9 62%,
+        #6b2fa0 86%,
+        #4b0082 100%
+    );
+}
+
+.splash-top {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.splash-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 35px 30px;
+    box-shadow: 0 10px 30px rgba(75, 0, 130, 0.25);
+    max-width: 360px;
+}
+
+.splash-logo {
+    width: 100%;
+    max-width: 260px;
+    margin-bottom: 12px;
+}
+
+.splash-welcome {
+    font-size: 15px;
+    color: #4b0082;
+    font-weight: bold;
+    margin-bottom: 22px;
+}
+
+.spinner {
+    width: 36px;
+    height: 36px;
+    border: 4px solid #e0d4ec;
+    border-top: 4px solid #4b0082;
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.splash-loading {
+    margin-top: 12px;
+    color: #6b4690;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.splash-skip {
+    margin-top: 22px;
+    font-size: 12px;
+    color: #ffffff;
+    opacity: 0.8;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.splash-motto {
+    padding: 22px 10px 28px;
+    text-align: center;
+}
+
+.splash-motto span {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.splash-motto .dot {
+    color: #d8b9f0;
+    margin: 0 12px;
+    font-weight: normal;
+    letter-spacing: 0;
+}
+
+@media (max-width: 480px) {
+    .splash-motto span {
+        font-size: 13px;
+    }
+    .splash-motto .dot {
+        margin: 0 6px;
+    }
+}

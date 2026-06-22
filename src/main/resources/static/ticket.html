@@ -1,0 +1,272 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Ticket</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+<header class="no-print">
+    <div class="navbar">
+        <h2>Booking</h2>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="contact.html">Contact</a>
+            <a href="booking.html">Booking</a>
+            <a href="services.html">Services</a>
+            <a href="parcels.html">Parcels</a>
+        </div>
+    </div>
+</header>
+
+
+<div class="form-container">
+
+    <h2>Booking Information</h2>
+
+    <p>Name: <span id="ticket-name"></span></p>
+    <p>From: <span id="ticket-from"></span></p>
+    <p>To: <span id="ticket-to"></span></p>
+    <p>Date: <span id="ticket-date"></span></p>
+    <p>Amount: <span id="amount"></span></p>
+    <p id="message"></p>
+
+</div>
+
+<button id="payment" onclick="payment()" class="no-print">Make Payment</button>
+
+
+<div id="ticket" style="display:none;">
+    <div class="form-container" class="no-print">
+
+        <div id="ticket" style="display:none;">
+    <div class="form-container ticket-card">
+        <div class="ticket-brand">🚌 PURPLE TRAVEL SYSTEM — E-TICKET</div>
+
+        <p>Name: <span id="ticket-name2"></span></p>
+        <p>From: <span id="ticket-from2"></span></p>
+        <p>To: <span id="ticket-to2"></span></p>
+        <p>Date: <span id="ticket-date2"></span></p>
+        <p class="ticket-number-row">Ticket Number: <span id="ticket-number"></span></p>
+
+        <div class="ticket-stub-line"></div>
+        <p class="ticket-note">Please present this ticket when boarding. Safe travels!</p>
+
+        <button id="printBtn" class="no-print" onclick="printTicket()">Print Ticket</button>
+    </div>
+</div>
+
+    </div>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const ticketId = params.get("ticketId");
+
+fetch(`/bookings/${ticketId}`)
+    .then(res => res.json())
+    .then(data => {
+
+        document.getElementById("ticket-name").innerText = data.name;
+        document.getElementById("ticket-from").innerText = data.fromLocation;
+        document.getElementById("ticket-to").innerText = data.toLocation;
+        document.getElementById("ticket-date").innerText = data.travelDate;
+        document.getElementById("amount").innerText = "GHS " + data.amount;
+
+    })
+    .catch(err => {
+        console.error("Error loading ticket:", err);
+        document.getElementById("message").innerText = "Failed to load booking.";
+    });
+    function printTicket() {
+    window.addEventListener("afterprint", function handler() {
+        window.removeEventListener("afterprint", handler);
+        window.location.href = "index.html";
+    });
+    window.print();
+}
+
+/* =========================
+   PAYMENT BUTTON
+   ========================= */
+function payment() {
+
+    fetch("/pay", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            ticketId: ticketId
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+
+        // show final ticket
+        document.getElementById("ticket-name2").innerText = document.getElementById("ticket-name").innerText;
+        document.getElementById("ticket-from2").innerText = document.getElementById("ticket-from").innerText;
+        document.getElementById("ticket-to2").innerText = document.getElementById("ticket-to").innerText;
+        document.getElementById("ticket-date2").innerText = document.getElementById("ticket-date").innerText;
+
+        document.getElementById("ticket-number").innerText = ticketId;
+
+        document.getElementById("ticket").style.display = "block";
+        
+         document.getElementById("ticket").scrollIntoView({ behavior: "smooth", block: "start" });
+        document.getElementById("message").innerText = "Payment successful. Ticket confirmed.";
+
+    })
+    .catch(err => {
+        console.error("Payment error:", err);
+        document.getElementById("message").innerText = "Payment failed.";
+    });
+}
+
+</script>
+
+</body>
+<footer class="no-print">
+    <p>&copy; 2026 Purple Travel System</p>
+</footer>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ticket</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="no-print">
+    <div class="navbar">
+        <h2>Booking</h2>
+        <div>
+            <a href="home.html">Home</a>
+            <a href="contact.html">Contact</a>
+            <a href="booking.html">Booking</a>
+            <a href="services.html">Services</a>
+            <a href="parcels.html">Parcels</a>
+        </div>
+    </div>
+</header>
+
+<div class="form-container no-print" id="bookingInfoCard">
+
+    <h2>Booking Information</h2>
+
+    <p>Name: <span id="ticket-name"></span></p>
+    <p>From: <span id="ticket-from"></span></p>
+    <p>To: <span id="ticket-to"></span></p>
+    <p>Date: <span id="ticket-date"></span></p>
+    <p>Amount: <span id="amount"></span></p>
+    <p>Arrival Time: <span></span>8:15 AM</p>
+    <p>Departure Time: <span></span>9:00 AM</p>
+    <p id="message"></p>
+
+</div>
+
+<button id="payment" class="no-print" onclick="payment()">Make Payment</button>
+
+<div id="ticket" style="display:none;">
+    <div class="form-container ticket-card">
+        <div class="ticket-brand">
+    <img src="logo.png" alt="Purple Travel" class="ticket-logo">
+    E-TICKET
+</div>
+        <div class="ticket-brand">&#128652; PURPLE TRAVEL SYSTEM - E-TICKET</div>
+<strong>
+        <p>Name: <span id="ticket-name2"></span></p>
+        <p>From: <span id="ticket-from2"></span></p>
+        <p>To: <span id="ticket-to2"></span></p>
+        <p>Date: <span id="ticket-date2"></span></p>
+        <p class="ticket-number-row">Ticket Number: <span id="ticket-number"><strong></strong></span></p>
+        <p>Arrival Time: <span></span>8:15 AM</p>
+        <p>Departure Time: <span></span>9:00 AM</p></strong>
+
+        <div class="ticket-stub-line"></div>
+        <p class="ticket-note" style="color: red;">Please present this ticket when boarding. Safe travels!</p>
+
+        <button id="printBtn" class="no-print" onclick="printTicket()">Print Ticket</button>
+    </div>
+</div>
+
+<footer class="no-print">
+    <p>© 2026 Purple Travel System</p>
+</footer>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const ticketId = params.get("ticketId");
+
+if (!ticketId) {
+    window.location.href = "booking.html";
+}
+
+// LOAD BOOKING
+fetch(`/bookings/${ticketId}`)
+    .then(res => {
+        if (!res.ok) throw new Error("Booking not found");
+        return res.json();
+    })
+    .then(data => {
+        document.getElementById("ticket-name").innerText = data.name;
+        document.getElementById("ticket-from").innerText = data.fromLocation;
+        document.getElementById("ticket-to").innerText = data.toLocation;
+        document.getElementById("ticket-date").innerText = data.travelDate;
+        document.getElementById("amount").innerText = "GHS " + data.amount;
+    })
+    .catch(err => {
+        console.error("Error loading ticket:", err);
+        document.getElementById("message").innerText = "Failed to load booking.";
+    });
+
+// PAYMENT
+function payment() {
+    const btn = document.getElementById("payment");
+    btn.disabled = true;
+
+    fetch("/pay", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ticketId: ticketId })
+    })
+    .then(res => {
+        if (!res.ok) throw new Error("Payment failed");
+        return res.json();
+    })
+    .then(data => {
+        document.getElementById("ticket-name2").innerText = document.getElementById("ticket-name").innerText;
+        document.getElementById("ticket-from2").innerText = document.getElementById("ticket-from").innerText;
+        document.getElementById("ticket-to2").innerText = document.getElementById("ticket-to").innerText;
+        document.getElementById("ticket-date2").innerText = document.getElementById("ticket-date").innerText;
+        document.getElementById("ticket-number").innerText = ticketId;
+
+        // Hide the old card + button, show only the final ticket
+        document.getElementById("bookingInfoCard").style.display = "none";
+        document.getElementById("payment").style.display = "none";
+        document.getElementById("ticket").style.display = "block";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    })
+    .catch(err => {
+        console.error("Payment error:", err);
+        document.getElementById("message").innerText = "Payment failed. Please try again.";
+        btn.disabled = false;
+    });
+}
+
+// PRINT
+function printTicket() {
+    window.addEventListener("afterprint", function handler() {
+        window.removeEventListener("afterprint", handler);
+        window.location.href = "index.html";
+    });
+    window.print();
+}
+</script>
+
+</body>
+</html>
