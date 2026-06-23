@@ -339,6 +339,7 @@ body::before {
         opacity: 0.12;
      }
 } */
+ 
 
 .booking-layout {
     display: flex;
@@ -420,6 +421,21 @@ body::before {
 
 .info-card li strong {
     color: #4b0082;
+}
+@media (max-width: 480px) {
+    #big {
+        padding: 25px 15px;
+    }
+    #big h3 {
+        font-size: 22px;
+    }
+    .info-card {
+        padding: 15px 18px;
+    }
+    .info-card li {
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
 }
 
 /*
