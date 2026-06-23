@@ -36,14 +36,19 @@ header {
     font-weight: bold;
     text-align: center;
 }
-
+@media(max-width:768px){
 .navbar {
-    display: flex;
+   
     justify-content: space-between;
-    align-items: center;
-     flex-wrap: wrap;
-}
+    align-items: flex-start;
 
+}
+.navbar nav{
+ display: flex;
+      flex-wrap: wrap;
+      gap:10px;
+}
+}
 
 .navbar a {
     color: white;
